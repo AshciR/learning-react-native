@@ -1,33 +1,37 @@
-import {Button, Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Button, Modal, StyleSheet, Text, View} from 'react-native';
 import {useState} from "react";
 
 const logo = require("./assets/adaptive-icon.png")
 
 export default function App() {
 
-  const [color, setColor] = useState("black");
+  const [isModalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Pressable
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onPress={() => setColor(color === "black" ? "midnightblue" : "black")}
-        onLongPress={() => setColor("red")}
-      >
-        <Image source={logo} style={{height: 100, width: 100}}/>
-        <Text style={{color: `${color}`, paddingLeft: "20%", paddingRight: "20%"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed nec nulla suscipit, varius justo in, varius lacus.
-        </Text>
-      </Pressable>
       <Button
-        title={"Press Me"}
-        onPress={() => console.log("Button Pressed.")}
+        title={"Open Modal"}
+        onPress={() => {
+          console.log("Button Pressed.")
+          setModalVisible(true)
+        }}
         color={"green"}
       />
+      <Modal
+        visible={isModalVisible}
+        onRequestClose={() => setModalVisible(false)}
+        animationType="slide"
+        presentationStyle="pageSheet"
+      >
+        <View style={styles.modal}>
+          <Text>Modal content</Text>
+          <Button
+            title={"Close"}
+            color={"white"}
+            onPress={() => setModalVisible(false)}
+          />
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -39,4 +43,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modal: {
+    flex: 1,
+    backgroundColor: "lightblue",
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 60
+  }
 });
