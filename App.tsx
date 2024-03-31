@@ -16,9 +16,9 @@ export default function App() {
 
   return (
     <>
-      <Stylish color={"red"}/>
-      <Stylish color={"yellow"}/>
-      <Stylish color={"green"}/>
+      <Stylish color={"red"} text={"Red Box"}/>
+      <Stylish color={"yellow"} text={"Yellow Box"}/>
+      <Stylish color={"green"} text={"Green Box"}/>
     </>
   );
 }
