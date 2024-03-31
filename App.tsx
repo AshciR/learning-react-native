@@ -1,6 +1,7 @@
 import {Button, Modal, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {useState} from "react";
 import ColorText from "./components/ColorText";
+import CustomAlert from "./components/CustomAlert";
 
 const logo = require("./assets/adaptive-icon.png")
 
@@ -14,7 +15,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ColorText text={displayText}/>
+      {/*<ColorText text={displayText}/>*/}
+      <CustomAlert/>
     </View>
   );
 }
